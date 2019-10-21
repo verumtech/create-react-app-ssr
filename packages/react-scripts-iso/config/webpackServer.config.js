@@ -11,7 +11,7 @@
 const fs = require('fs');
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
-const ModuleScopePlugin = require('react-ssr-dev-utils/ModuleScopePlugin');
+const ModuleScopePlugin = require('@verumtech/react-dev-utils/ModuleScopePlugin');
 
 const paths = require('./paths');
 const modules = require('./modules');
