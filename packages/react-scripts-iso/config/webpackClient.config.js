@@ -34,8 +34,11 @@ const useTypeScript = fs.existsSync(paths.appTsConfig);
 module.exports = function(webpackEnv) {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
-  const { client: clientLoaders } = require('./loaders')(webpackEnv, 'client');
-  const clientPlugins = require('./plugins')(webpackEnv, 'client');
+  const { client: clientLoaders } = require('./webpackLoaders')(
+    webpackEnv,
+    'client'
+  );
+  const clientPlugins = require('./webpackPlugins')(webpackEnv, 'client');
   const env = getClientEnvironment();
   const publicPath = isEnvProduction
     ? `${env.raw.ASSETS_PATH}/`

@@ -48,7 +48,6 @@ module.exports = function(api, opts, env) {
     opts.absoluteRuntime,
     true
   );
-  var isEnvServer = validateBoolOption('server', opts.server, true);
 
   var absoluteRuntimePath = undefined;
   if (useAbsoluteRuntime) {
@@ -191,7 +190,7 @@ module.exports = function(api, opts, env) {
       require('babel-plugin-styled-components').default,
       // Adds syntax support for import()
       require('@babel/plugin-syntax-dynamic-import').default,
-      (isEnvTest || isEnvServer) &&
+      isEnvTest &&
         // Transform dynamic import to require
         require('babel-plugin-dynamic-import-node'),
     ].filter(Boolean),

@@ -15,7 +15,7 @@ const getCacheIdentifier = require('@verumtech/react-dev-utils/getCacheIdentifie
 // @remove-on-eject-end
 const postcssNormalize = require('postcss-normalize');
 
-const paths = require('../paths');
+const paths = require('./paths');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -49,10 +49,7 @@ const baseLoaders = (webpackEnv, appEnv) => {
         // @remove-on-eject-begin
         babelrc: false,
         configFile: false,
-        presets: [
-          require.resolve('@verumtech/babel-preset-react-app-iso'),
-          { server: isEnvServer },
-        ],
+        presets: [require.resolve('@verumtech/babel-preset-react-app-iso')],
         // Make sure we have a unique cache identifier, erring on the
         // side of caution.
         // We remove this when the user ejects because the default
@@ -62,7 +59,7 @@ const baseLoaders = (webpackEnv, appEnv) => {
           isEnvProduction ? 'production' : isEnvDevelopment && 'development',
           [
             'babel-plugin-named-asset-import',
-            '@verumtech/babel-preset-react-app-spa',
+            '@verumtech/babel-preset-react-app-iso',
             '@verumtech/react-dev-utils',
             '@verumtech/react-scripts',
             '@verumtech/react-scripts-iso',
@@ -70,6 +67,8 @@ const baseLoaders = (webpackEnv, appEnv) => {
         ),
         // @remove-on-eject-end
         plugins: [
+          // Transform dynamic import to require for server
+          isEnvServer && require.resolve('babel-plugin-dynamic-import-node'),
           [
             require.resolve('babel-plugin-named-asset-import'),
             {
@@ -102,9 +101,9 @@ const baseLoaders = (webpackEnv, appEnv) => {
         presets: [
           [
             require.resolve(
-              '@verumtech/babel-preset-react-app-spa/dependencies'
+              '@verumtech/babel-preset-react-app-iso/dependencies'
             ),
-            { helpers: true, server: isEnvServer },
+            { helpers: true },
           ],
         ],
         cacheDirectory: true,
@@ -114,7 +113,7 @@ const baseLoaders = (webpackEnv, appEnv) => {
           isEnvProduction ? 'production' : isEnvDevelopment && 'development',
           [
             'babel-plugin-named-asset-import',
-            '@verumtech/babel-preset-react-app-spa',
+            '@verumtech/babel-preset-react-app-iso',
             '@verumtech/react-dev-utils',
             '@verumtech/react-scripts',
             '@verumtech/react-scripts-iso',
