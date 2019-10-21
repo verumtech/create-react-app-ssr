@@ -40,7 +40,7 @@ const FileSizeReporter = require('@verumtech/react-dev-utils/FileSizeReporter');
 const formatWebpackMessages = require('@verumtech/react-dev-utils/formatWebpackMessages');
 const printBuildError = require('@verumtech/react-dev-utils/printBuildError');
 const {
-  printHostingInstructionsSpa,
+  printHostingInstructionsIso,
 } = require('@verumtech/react-dev-utils/printHostingInstructions');
 
 const paths = require('../config/paths');
@@ -119,7 +119,7 @@ checkBrowsers(paths.appPath, isInteractive)
 
       const assetsPath = clientConfig.output.publicPath;
       const buildFolder = path.relative(process.cwd(), paths.appBuild);
-      printHostingInstructionsSpa(assetsPath, buildFolder);
+      printHostingInstructionsIso(assetsPath, buildFolder);
     },
     err => {
       console.log(chalk.red('Failed to compile.\n'));
