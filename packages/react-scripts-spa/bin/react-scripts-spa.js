@@ -59,8 +59,8 @@ if (['build', 'start'].includes(script)) {
     'react-scripts',
     nodeArgs
       .concat(script)
-      .concat(args.slice(scriptIndex + 1))
-      .concat(['--script', 'react-scripts-spa']),
+      .concat(['--script', 'react-scripts-spa'])
+      .concat(args.slice(scriptIndex + 1)),
     { stdio: 'inherit' }
   );
   process.exit(result.status);
