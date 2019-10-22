@@ -1,9 +1,10 @@
 {
   "default": {
+    "@types/jest": "",
     "@types/node": "",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.57.65",
-    "@types/jest": "",
+    "@types/react-test-renderer": "16.8.3",
     "expo": "^35.0.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
