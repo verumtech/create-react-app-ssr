@@ -34,6 +34,7 @@ module.exports = (resolve, rootDir, isEjecting) => {
     testMatch: [
       '<rootDir>/**/__tests__/**/*.{js,jsx,ts,tsx}',
       '<rootDir>/**/*.{spec,test}.{js,jsx,ts,tsx}',
+      '!<rootDir>/node_modules/**',
     ],
     transform: {
       '^.+\\.(js|jsx|ts|tsx)$': isEjecting

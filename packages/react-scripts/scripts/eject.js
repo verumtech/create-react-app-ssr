@@ -249,10 +249,14 @@ inquirer
     appPackage.jest = jestConfig;
 
     // Add Babel config
-    console.log(`  Adding ${cyan('Babel')} preset`);
-    appPackage.babel = {
-      presets: [`@verumtech/${ownPaths.scriptName.replace('scripts', 'app')}`],
-    };
+    if (!fs.existsSync(path.join(appPath, 'babel.config.js'))) {
+      console.log(`  Adding ${cyan('Babel')} preset`);
+      appPackage.babel = {
+        presets: [
+          `@verumtech/${ownPaths.scriptName.replace('scripts', 'app')}`,
+        ],
+      };
+    }
 
     // Add ESlint config
     if (!appPackage.eslintConfig) {
