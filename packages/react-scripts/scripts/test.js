@@ -11,6 +11,7 @@
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'test';
 process.env.NODE_ENV = 'test';
+process.env.PUBLIC_URL = '';
 
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
@@ -19,15 +20,28 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
+const ownPaths = require('../config/paths');
+
+const appPath = ownPaths.appPath;
+const scriptPath = ownPaths.scriptPath;
+
 // Ensure environment variables are read.
-require('../config/env');
+require(path.join(scriptPath, 'config', 'env'));
 // @remove-on-eject-begin
 // Do the preflight check (only happens before eject).
-const verifyPackageTree = require('../config/verifyPackageTree');
+const verifyPackageTree = require(path.join(
+  scriptPath,
+  'config',
+  'verifyPackageTree'
+));
 if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
   verifyPackageTree();
 }
-const verifyTypeScriptSetup = require('../config/verifyTypeScriptSetup');
+const verifyTypeScriptSetup = require(path.join(
+  scriptPath,
+  'config',
+  'verifyTypeScriptSetup'
+));
 verifyTypeScriptSetup();
 // @remove-on-eject-end
 
@@ -65,16 +79,19 @@ if (
 
 // @remove-on-eject-begin
 // This is not necessary after eject because we embed config into package.json.
-const createJestConfig = require('../config/createJestConfig');
+const createJestConfig = require(path.join(
+  scriptPath,
+  'config',
+  'createJestConfig'
+));
 const path = require('path');
-const paths = require('../config/paths');
 
 argv.push(
   '--config',
   JSON.stringify(
     createJestConfig(
-      relativePath => path.resolve(__dirname, '..', relativePath),
-      path.resolve(paths.appPath, '..'),
+      relativePath => path.resolve(scriptPath, relativePath),
+      appPath,
       false
     )
   )

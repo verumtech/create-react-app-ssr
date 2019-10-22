@@ -1,0 +1,15 @@
+{
+  "default": {
+    "@types/node": "",
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.57.65",
+    "@types/jest": "",
+    "expo": "^35.0.0",
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-native-web": "^0.11.7",
+    "react-test-renderer": "16.8.3",
+    "typescript": "^3.6.3"
+  }
+}

@@ -454,7 +454,7 @@ function run(
         checkNodeVersion(packageName);
 
         const pnpPath = path.resolve(process.cwd(), '.pnp.js');
-
+        const scriptPath = require.resolve(packageName);
         const nodeArgs = fs.existsSync(pnpPath) ? ['--require', pnpPath] : [];
 
         await executeNodeScript(
@@ -462,11 +462,19 @@ function run(
             cwd: process.cwd(),
             args: nodeArgs,
           },
-          [root, appName, verbose, originalDirectory, useTypescript],
+          [
+            root,
+            appName,
+            scriptPath,
+            packageName,
+            verbose,
+            originalDirectory,
+            useTypescript,
+          ],
           `
-        var init = require('${packageName}/scripts/init.js');
-        init.apply(null, JSON.parse(process.argv[1]));
-      `
+            var init = require('react-scripts/scripts/init.js');
+            init.apply(null, JSON.parse(process.argv[1]));
+          `
         );
       })
       .catch(reason => {
