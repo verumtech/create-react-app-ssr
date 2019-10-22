@@ -20,6 +20,8 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
+const path = require('path');
+
 const ownPaths = require('../config/paths');
 
 const appPath = ownPaths.appPath;
@@ -84,7 +86,6 @@ const createJestConfig = require(path.join(
   'config',
   'createJestConfig'
 ));
-const path = require('path');
 
 argv.push(
   '--config',
