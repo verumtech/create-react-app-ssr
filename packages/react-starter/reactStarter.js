@@ -455,6 +455,7 @@ function run(
 
         const pnpPath = path.resolve(process.cwd(), '.pnp.js');
         const scriptPath = path.resolve(root, 'node_modules', packageName);
+        const scriptName = packageName.replace('@verumtech/', '');
         const nodeArgs = fs.existsSync(pnpPath) ? ['--require', pnpPath] : [];
 
         await executeNodeScript(
@@ -466,7 +467,7 @@ function run(
             root,
             appName,
             scriptPath,
-            packageName,
+            scriptName,
             verbose,
             originalDirectory,
             useTypescript,
