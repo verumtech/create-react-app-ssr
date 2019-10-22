@@ -472,7 +472,7 @@ function run(
             useTypescript,
           ],
           `
-            var init = require('react-scripts/scripts/init.js');
+            var init = require('@verumtech/react-scripts/scripts/init.js');
             init.apply(null, JSON.parse(process.argv[1]));
           `
         );
