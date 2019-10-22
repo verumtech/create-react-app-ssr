@@ -20,16 +20,14 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
+// Ensure environment variables are read.
+require('../config/env');
+// @remove-on-eject-begin
 const path = require('path');
-
 const ownPaths = require('../config/paths');
-
 const appPath = ownPaths.appPath;
 const scriptPath = ownPaths.scriptPath;
-
-// Ensure environment variables are read.
 require(path.join(scriptPath, 'config', 'env'));
-// @remove-on-eject-begin
 // Do the preflight check (only happens before eject).
 const verifyPackageTree = require(path.join(
   scriptPath,
@@ -49,7 +47,10 @@ verifyTypeScriptSetup();
 
 const jest = require('jest');
 const execSync = require('child_process').execSync;
-let argv = process.argv.slice(4);
+let argv = process.argv.slice(2);
+// @remove-on-eject-begin
+argv = process.argv.slice(2);
+// @remove-on-eject-end
 
 function isInGitRepository() {
   try {
