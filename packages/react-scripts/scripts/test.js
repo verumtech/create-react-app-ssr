@@ -44,7 +44,6 @@ const verifyTypeScriptSetup = require(path.join(
 ));
 verifyTypeScriptSetup();
 // @remove-on-eject-end
-
 const jest = require('jest');
 const execSync = require('child_process').execSync;
 let argv = process.argv.slice(2);
@@ -52,7 +51,6 @@ let argv = process.argv.slice(2);
 // Before ejection we have a --script <script_name> flag to remove from the jest command
 argv = process.argv.slice(4);
 // @remove-on-eject-end
-
 function isInGitRepository() {
   try {
     execSync('git rev-parse --is-inside-work-tree', { stdio: 'ignore' });

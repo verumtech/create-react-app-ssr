@@ -30,7 +30,6 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
 const verifyTypeScriptSetup = require('../config/verifyTypeScriptSetup');
 verifyTypeScriptSetup();
 // @remove-on-eject-end
-
 const spawn = require('@verumtech/react-dev-utils/crossSpawn');
 const checkRequiredFiles = require('@verumtech/react-dev-utils/checkRequiredFiles');
 
