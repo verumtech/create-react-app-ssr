@@ -12,11 +12,11 @@ module.exports = function(api) {
   return {
     presets: [
       // Expo preset
-      require('babel-preset-expo').default,
+      'babel-preset-expo',
     ],
     plugins: [
       // Support for styled components
-      require('babel-plugin-styled-components').default,
+      'babel-plugin-styled-components',
     ],
   };
 };
