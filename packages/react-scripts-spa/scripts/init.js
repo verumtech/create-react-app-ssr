@@ -206,7 +206,7 @@ module.exports = function(
     const templateDependencies = require(templateDependenciesPath);
     args = args.concat(
       Object.keys(templateDependencies.default).map(key => {
-        return `${key}@${templateDependencies[key]}`;
+        return `${key}@${templateDependencies.default[key]}`;
       })
     );
     fs.unlinkSync(templateDependenciesPath);
