@@ -454,12 +454,7 @@ function run(
         checkNodeVersion(packageName);
 
         const pnpPath = path.resolve(process.cwd(), '.pnp.js');
-        const scriptPath = path.resolve(
-          root,
-          'node_modules',
-          '@verumtech',
-          packageName
-        );
+        const scriptPath = path.resolve(root, 'node_modules', packageName);
         const nodeArgs = fs.existsSync(pnpPath) ? ['--require', pnpPath] : [];
 
         await executeNodeScript(
