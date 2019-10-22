@@ -203,14 +203,11 @@ module.exports = function(
   }
 
   // Install additional template dependencies, if present
-  const templateDependenciesPath = path.join(
-    appPath,
-    '.template.dependencies.json'
-  );
+  const templateDependenciesPath = path.join(appPath, 'dependencies.json');
   if (fs.existsSync(templateDependenciesPath)) {
     const templateDependencies = require(templateDependenciesPath);
     args = args.concat(
-      Object.keys(templateDependencies).map(key => {
+      Object.keys(templateDependencies.default).map(key => {
         return `${key}@${templateDependencies[key]}`;
       })
     );

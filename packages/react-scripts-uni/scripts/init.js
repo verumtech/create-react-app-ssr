@@ -96,11 +96,11 @@ module.exports = function(
 
   // Setup the script rules
   appPackage.scripts = {
-    start: 'react-scripts-spa start',
-    build: 'react-scripts-spa build',
-    test: 'react-scripts-spa test',
-    eject: 'react-scripts-spa eject',
-    lint: 'react-scripts-spa lint',
+    start: 'react-scripts-uni start',
+    build: 'react-scripts-uni build',
+    test: 'react-scripts-uni test',
+    eject: 'react-scripts-uni eject',
+    lint: 'react-scripts-uni lint',
   };
 
   if (useTypeScript) {
@@ -189,12 +189,13 @@ module.exports = function(
     command = 'npm';
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
-  args.push('react', 'react-dom');
+
   if (useTypeScript) {
     args.push(
       '@types/node',
       '@types/react',
       '@types/react-dom',
+      '@types/react-native',
       '@types/jest',
       'typescript'
     );
